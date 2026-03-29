@@ -93,7 +93,7 @@ open a machine terminal in your `Repos` folder:
 
 ```shell
 # Replace username with YOUR GitHub username.
-git clone https://github.com/username/nlp-04-api-text-data
+git clone https://github.com/Angie-Crews/nlp-04-api-text-data
 cd nlp-04-api-text-data
 code .
 ```
@@ -212,3 +212,18 @@ Phase 1 outcome achieved:
 - Python environment set up with uv
 - Project run completed successfully
 - Commit pushed to GitHub
+
+## Phase 2: Change Authorship
+
+Phase 2. Make the project yours while preserving credit for the original.
+
+Goal:
+
+In this phase, you update the project to reflect your authorship. The repository now belongs to you while crediting the original source.
+
+Steps:
+
+1. [Git pull before changes](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/02-change-authorship/01-git-pull-before-changes/)
+2. [Update authorship and repository references](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/02-change-authorship/02-update-authorship/)
+3. [Run the project code](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/02-change-authorship/03-run-project/)
+4. [Git add-commit-push](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/02-change-authorship/04-git-add-commit-push/)
