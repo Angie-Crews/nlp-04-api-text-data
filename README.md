@@ -192,3 +192,23 @@ such as Great Expectations or Soda.
 
 In this module, validation is implemented manually to develop a
 clear understanding of structure, assumptions, and data quality.
+
+## Phase 1: Start & Run (Completed)
+
+The project has been completed using Workflow 2.1 steps:
+
+1. [Start in GitHub to Copy a Template Repository](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/01-start-and-run/01-start-in-github/)
+2. [Configure Repository Settings](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/01-start-and-run/02-configure-repo-settings/)
+3. [Clone the Repository To Your Machine](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/01-start-and-run/03-clone-repo-to-local/)
+4. [Open the Project in VS Code (and Install Recommended VS Code Extensions)](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/01-start-and-run/04-open-vscode-extensions/)
+5. [Set up Project Python Environment (managed by uv)](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/01-start-and-run/05-set-up-environment/)
+6. [Run the Project Code](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/01-start-and-run/06-run-project/)
+7. [Git add-commit-push](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/01-start-and-run/07-git-add-commit-push/)
+
+Phase 1 outcome achieved:
+
+- Working project copy in GitHub
+- Local clone on machine
+- Python environment set up with uv
+- Project run completed successfully
+- Commit pushed to GitHub
