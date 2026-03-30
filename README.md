@@ -227,3 +227,77 @@ Steps:
 2. [Update authorship and repository references](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/02-change-authorship/02-update-authorship/)
 3. [Run the project code](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/02-change-authorship/03-run-project/)
 4. [Git add-commit-push](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/02-change-authorship/04-git-add-commit-push/)
+
+## Phase 3: Read & Understand the Project
+
+Phase 3. Read and understand the tools and techniques used in the project.
+
+Professional Practice:
+
+Before modifying a project, first read and understand how it works.
+
+Professional developers often explore a project in a consistent order: documentation, code, data, and outputs.
+
+Focus on the overall flow of the project. It's not necessary to understand every line of code at this point.
+
+Professional Project Organization:
+
+Real-world projects contain many files, so most professional projects follow a predictable organization.
+
+Folder Naming Conventions:
+
+When referring to a folder in documentation, a / is often added to the name. For example, data/.
+
+The slash is not part of the folder name - it just indicates a folder.
+
+Goal:
+
+By the end of this phase you should understand:
+
+- the purpose of the project
+- the main tools or techniques used
+- how data flows through the program
+
+Suggested Reading Order:
+
+1. README.md (root project folder)
+
+   Overview of the project, description of the problem and approach, and instructions for running the project.
+
+2. Documentation (docs/)
+
+   Explanations of the project and descriptions of techniques used.
+
+3. Notebooks and Source Code (notebooks/ and src/)
+
+   Jupyter notebooks usually run from top to bottom.
+
+   Python modules are typically stored in src/. Execution often begins at an entry point near the end of the file:
+
+
+   ```python
+   def main():
+       # This is where execution logic begins
+
+   if __name__ == "__main__":
+       main()
+   ```
+
+   When reading a Python file:
+
+   - locate the main() function
+   - observe which functions are called
+   - follow how information flows through the program
+   - note what is passed to each function as arguments (inside the parentheses)
+
+4. Data (data/)
+
+   Explore the input datasets and observe how data is used in the program.
+
+5. Outputs (artifacts/ or output/)
+
+   Review generated results, charts, or reports.
+
+6. Log File (project.log)
+
+   Shows what the program did during execution, helps with debugging, and confirms the program was executed successfully.
