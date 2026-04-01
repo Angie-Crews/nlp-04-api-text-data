@@ -382,3 +382,100 @@ uv run python -m nlp.pipeline_api_json_angiecrews
 - The processed output was written to `data/processed/angiecrews_comments_processed.csv` with 9 columns:
   `post_id`, `comment_id`, `name`, `email`, `body`, `name_length`, `name_word_count`, `body_length`, `body_word_count`.
 - All original `_case` files were preserved and untouched.
+
+## Phase 5: Apply Skills to a New Problem
+
+### Problem
+
+The `/comments` pipeline revealed text content, but not the users behind it.
+Phase 5 answers: **"Who are the users behind the posts?"**
+
+The `/users` endpoint returns 10 user records with nested JSON objects for `address` and `company`.
+This required new techniques not used in Phase 4 or the original example.
+
+### Phase 5 custom files created
+
+| Custom file | Purpose |
+|---|---|
+| `src/nlp/config_angiecrews_users.py` | API URL and output paths for `/users` |
+| `src/nlp/stage02_validate_angiecrews_users.py` | Validates nested user records |
+| `src/nlp/stage03_transform_angiecrews_users.py` | Flattens nested JSON, derives `email_domain` |
+| `src/nlp/pipeline_api_json_angiecrews_users.py` | Phase 5 pipeline entry point |
+| `data/raw/angiecrews_users_raw.json` | Raw JSON fetched from `/users` |
+| `data/processed/angiecrews_users_processed.csv` | Final flattened and enriched output |
+
+### What is new or different in Phase 5
+
+**New endpoint and schema** (`config_angiecrews_users.py`)
+
+```python
+API_URL: str = "https://jsonplaceholder.typicode.com/users"
+```
+
+The `/users` schema is fundamentally different: 10 records instead of 500,
+and fields like `address` and `company` are nested dictionaries, not flat strings.
+
+**Nested JSON flattening** (`stage03_transform_angiecrews_users.py`)
+
+The `address` and `company` objects were flattened by extracting specific sub-keys:
+
+```python
+address: dict = record.get("address", {})
+company: dict = record.get("company", {})
+
+records.append({
+    ...
+    "city": address.get("city", ""),
+    "company_name": company.get("name", ""),
+})
+```
+
+**Derived `email_domain` column** (`stage03_transform_angiecrews_users.py`)
+
+A new column was derived by splitting the email address on `@`:
+
+```python
+pl.col("email").str.split("@").list.get(1).alias("email_domain")
+```
+
+**Structure inspection for nested keys** (`stage02_validate_angiecrews_users.py`)
+
+Validation was extended to log nested key names so the structure is fully visible in every run:
+
+```python
+for key, value in first_record.get("address", {}).items():
+    LOG.info(f"  address.{key}: {type(value).__name__}")
+```
+
+### What I observed after running the project
+
+```shell
+uv run python -m nlp.pipeline_api_json_angiecrews_users
+```
+
+- **10 user records** were fetched from the `/users` endpoint.
+- Validation passed for all 10 records; nested `address` and `company` keys were logged.
+- All 10 records were retained (no filter applied — the dataset is already small).
+- `name_length` stats: min=12, max=24, mean=16.5
+- **10 unique email domains** derived: `annie.ca`, `april.biz`, `billy.biz`, `dana.io`, `jasper.info`, `karina.biz`, `kory.org`, `melissa.tv`, `rosamond.me`, `yesenia.net`
+- Output written to `data/processed/angiecrews_users_processed.csv` with 9 columns:
+  `user_id`, `name`, `username`, `email`, `phone`, `website`, `city`, `company_name`, `email_domain`
+
+### Results summary
+
+| Field | Value |
+|---|---|
+| Endpoint | `/users` |
+| Records fetched | 10 |
+| Records after validation | 10 |
+| Output columns | 9 |
+| Derived column | `email_domain` |
+| Nested objects flattened | `address` (→ `city`), `company` (→ `company_name`) |
+| Unique email domains | 10 |
+
+### What I learned
+
+- Nested JSON structures require explicit flattening before they can be loaded into a DataFrame.
+- Deriving a field like `email_domain` from an existing field adds analytical value with minimal code.
+- A small dataset (10 records) still exercises the full EVTL pipeline and teaches the same concepts.
+- The same shared `stage01_extract` and `stage04_load` worked unchanged with a completely different endpoint — proof that the pipeline design is reusable.

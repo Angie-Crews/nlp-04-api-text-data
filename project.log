@@ -282,3 +282,109 @@ shape: (5, 9)
 2026-03-31 19:05:44 | INFO | CI | ========================
 2026-03-31 19:05:44 | INFO | CI | Custom pipeline executed successfully!
 2026-03-31 19:05:44 | INFO | CI | ========================
+2026-03-31 19:34:20 | INFO | CI | === RUN START ===
+2026-03-31 19:34:20 | INFO | CI | project=MODULE 4: EVTL PIPELINE (ANGIECREWS USERS)
+2026-03-31 19:34:20 | INFO | CI | repo_dir=nlp-04-api-text-data
+2026-03-31 19:34:20 | INFO | CI | python=3.14.3
+2026-03-31 19:34:20 | INFO | CI | os=Windows 11
+2026-03-31 19:34:20 | INFO | CI | shell=powershell
+2026-03-31 19:34:20 | INFO | CI | cwd=.
+2026-03-31 19:34:20 | INFO | CI | github_actions=False
+2026-03-31 19:34:20 | INFO | CI | START PIPELINE
+2026-03-31 19:34:20 | INFO | CI | ROOT_PATH = .
+2026-03-31 19:34:20 | INFO | CI | DATA_PATH = data
+2026-03-31 19:34:20 | INFO | CI | RAW_PATH = data\raw
+2026-03-31 19:34:20 | INFO | CI | PROCESSED_PATH = data\processed
+2026-03-31 19:34:20 | INFO | CI | ========================
+2026-03-31 19:34:20 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-03-31 19:34:20 | INFO | CI | ========================
+2026-03-31 19:34:21 | INFO | CI | SOURCE PATH = https://jsonplaceholder.typicode.com/users
+2026-03-31 19:34:21 | INFO | CI | SINK PATH = data\raw\angiecrews_users_raw.json
+2026-03-31 19:34:21 | INFO | CI | ========================
+2026-03-31 19:34:21 | INFO | CI | STAGE 02: VALIDATE (angiecrews_users) starting...
+2026-03-31 19:34:21 | INFO | CI | ========================
+2026-03-31 19:34:21 | INFO | CI | JSON STRUCTURE INSPECTION:
+2026-03-31 19:34:21 | INFO | CI | Top-level type: list
+2026-03-31 19:34:21 | INFO | CI | Keys in first record: ['id', 'name', 'username', 'email', 'address', 'phone', 'website', 'company']
+2026-03-31 19:34:21 | INFO | CI | Field types:
+2026-03-31 19:34:21 | INFO | CI |   id: int
+2026-03-31 19:34:21 | INFO | CI |   name: str
+2026-03-31 19:34:21 | INFO | CI |   username: str
+2026-03-31 19:34:21 | INFO | CI |   email: str
+2026-03-31 19:34:21 | INFO | CI |   address: dict
+2026-03-31 19:34:21 | INFO | CI |   phone: str
+2026-03-31 19:34:21 | INFO | CI |   website: str
+2026-03-31 19:34:21 | INFO | CI |   company: dict
+2026-03-31 19:34:21 | INFO | CI | Nested address keys:
+2026-03-31 19:34:21 | INFO | CI |   address.street: str
+2026-03-31 19:34:21 | INFO | CI |   address.suite: str
+2026-03-31 19:34:21 | INFO | CI |   address.city: str
+2026-03-31 19:34:21 | INFO | CI |   address.zipcode: str
+2026-03-31 19:34:21 | INFO | CI |   address.geo: dict
+2026-03-31 19:34:21 | INFO | CI | Nested company keys:
+2026-03-31 19:34:21 | INFO | CI |   company.name: str
+2026-03-31 19:34:21 | INFO | CI |   company.catchPhrase: str
+2026-03-31 19:34:21 | INFO | CI |   company.bs: str
+2026-03-31 19:34:21 | INFO | CI | Validation complete: 10 of 10 records passed.
+2026-03-31 19:34:21 | INFO | CI | Sink: validated JSON object
+2026-03-31 19:34:21 | INFO | CI | ========================
+2026-03-31 19:34:21 | INFO | CI | STAGE 03: TRANSFORM (angiecrews_users) starting...
+2026-03-31 19:34:21 | INFO | CI | ========================
+2026-03-31 19:34:21 | INFO | CI | name_length stats: min=12, max=24, mean=16.5
+2026-03-31 19:34:21 | INFO | CI | Unique email domains (10): ['annie.ca', 'april.biz', 'billy.biz', 'dana.io', 'jasper.info', 'karina.biz', 'kory.org', 'melissa.tv', 'rosamond.me', 'yesenia.net']
+2026-03-31 19:34:21 | INFO | CI | Transformation complete.
+2026-03-31 19:34:21 | INFO | CI | DataFrame preview:
+shape: (10, 9)
+┌─────────┬─────────┬─────────┬────────┬───┬────────┬────────┬────────┬────────┐
+│ user_id ┆ name    ┆ usernam ┆ email  ┆ … ┆ websit ┆ city   ┆ compan ┆ email_ │
+│ ---     ┆ ---     ┆ e       ┆ ---    ┆   ┆ e      ┆ ---    ┆ y_name ┆ domain │
+│ i64     ┆ str     ┆ ---     ┆ str    ┆   ┆ ---    ┆ str    ┆ ---    ┆ ---    │
+│         ┆         ┆ str     ┆        ┆   ┆ str    ┆        ┆ str    ┆ str    │
+╞═════════╪═════════╪═════════╪════════╪═══╪════════╪════════╪════════╪════════╡
+│ 1       ┆ Leanne  ┆ Bret    ┆ Sincer ┆ … ┆ hildeg ┆ Gwenbo ┆ Romagu ┆ april. │
+│         ┆ Graham  ┆         ┆ e@apri ┆   ┆ ard.or ┆ rough  ┆ era-Cr ┆ biz    │
+│         ┆         ┆         ┆ l.biz  ┆   ┆ g      ┆        ┆ ona    ┆        │
+│ 2       ┆ Ervin   ┆ Antonet ┆ Shanna ┆ … ┆ anasta ┆ Wisoky ┆ Deckow ┆ meliss │
+│         ┆ Howell  ┆ te      ┆ @melis ┆   ┆ sia.ne ┆ burgh  ┆ -Crist ┆ a.tv   │
+│         ┆         ┆         ┆ sa.tv  ┆   ┆ t      ┆        ┆        ┆        │
+│ 3       ┆ Clement ┆ Samanth ┆ Nathan ┆ … ┆ ramiro ┆ McKenz ┆ Romagu ┆ yeseni │
+│         ┆ ine     ┆ a       ┆ @yesen ┆   ┆ .info  ┆ iehave ┆ era-Ja ┆ a.net  │
+│         ┆ Bauch   ┆         ┆ ia.net ┆   ┆        ┆ n      ┆ cobson ┆        │
+│ 4       ┆ Patrici ┆ Kariann ┆ Julian ┆ … ┆ kale.b ┆ South  ┆ Robel- ┆ kory.o │
+│         ┆ a       ┆ e       ┆ ne.OCo ┆   ┆ iz     ┆ Elvis  ┆ Corker ┆ rg     │
+│         ┆ Lebsack ┆         ┆ nner@k ┆   ┆        ┆        ┆ y      ┆        │
+│         ┆         ┆         ┆ ory.or ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆         ┆ g      ┆   ┆        ┆        ┆        ┆        │
+│ 5       ┆ Chelsey ┆ Kamren  ┆ Lucio_ ┆ … ┆ demarc ┆ Roscoe ┆ Keeble ┆ annie. │
+│         ┆ Dietric ┆         ┆ Hettin ┆   ┆ o.info ┆ view   ┆ r LLC  ┆ ca     │
+│         ┆ h       ┆         ┆ ger@an ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆         ┆ nie.ca ┆   ┆        ┆        ┆        ┆        │
+│ 6       ┆ Mrs.    ┆ Leopold ┆ Karley ┆ … ┆ ola.or ┆ South  ┆ Consid ┆ jasper │
+│         ┆ Dennis  ┆ o_Corke ┆ _Dach@ ┆   ┆ g      ┆ Christ ┆ ine-Lo ┆ .info  │
+│         ┆ Schulis ┆ ry      ┆ jasper ┆   ┆        ┆ y      ┆ ckman  ┆        │
+│         ┆ t       ┆         ┆ .info  ┆   ┆        ┆        ┆        ┆        │
+│ 7       ┆ Kurtis  ┆ Elwyn.S ┆ Telly. ┆ … ┆ elvis. ┆ Howemo ┆ Johns  ┆ billy. │
+│         ┆ Weissna ┆ kiles   ┆ Hoeger ┆   ┆ io     ┆ uth    ┆ Group  ┆ biz    │
+│         ┆ t       ┆         ┆ @billy ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆         ┆ .biz   ┆   ┆        ┆        ┆        ┆        │
+│ 8       ┆ Nichola ┆ Maxime_ ┆ Sherwo ┆ … ┆ jacynt ┆ Aliyav ┆ Aberna ┆ rosamo │
+│         ┆ s Runol ┆ Nienow  ┆ od@ros ┆   ┆ he.com ┆ iew    ┆ thy    ┆ nd.me  │
+│         ┆ fsdotti ┆         ┆ amond. ┆   ┆        ┆        ┆ Group  ┆        │
+│         ┆ r V     ┆         ┆ me     ┆   ┆        ┆        ┆        ┆        │
+│ 9       ┆ Glenna  ┆ Delphin ┆ Chaim_ ┆ … ┆ conrad ┆ Bartho ┆ Yost   ┆ dana.i │
+│         ┆ Reicher ┆ e       ┆ McDerm ┆   ┆ .com   ┆ lomebu ┆ and    ┆ o      │
+│         ┆ t       ┆         ┆ ott@da ┆   ┆        ┆ ry     ┆ Sons   ┆        │
+│         ┆         ┆         ┆ na.io  ┆   ┆        ┆        ┆        ┆        │
+│ 10      ┆ Clement ┆ Moriah. ┆ Rey.Pa ┆ … ┆ ambros ┆ Lebsac ┆ Hoeger ┆ karina │
+│         ┆ ina     ┆ Stanton ┆ dberg@ ┆   ┆ e.net  ┆ kbury  ┆ LLC    ┆ .biz   │
+│         ┆ DuBuque ┆         ┆ karina ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆         ┆ .biz   ┆   ┆        ┆        ┆        ┆        │
+└─────────┴─────────┴─────────┴────────┴───┴────────┴────────┴────────┴────────┘
+2026-03-31 19:34:21 | INFO | CI | Sink: Polars DataFrame created
+2026-03-31 19:34:21 | INFO | CI | ========================
+2026-03-31 19:34:21 | INFO | CI | STAGE 04: LOAD starting...
+2026-03-31 19:34:21 | INFO | CI | ========================
+2026-03-31 19:34:21 | INFO | CI | SINK PATH = data\processed\angiecrews_users_processed.csv
+2026-03-31 19:34:21 | INFO | CI | ========================
+2026-03-31 19:34:21 | INFO | CI | Custom Users pipeline executed successfully!
+2026-03-31 19:34:21 | INFO | CI | ========================
