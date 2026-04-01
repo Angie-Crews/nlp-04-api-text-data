@@ -1,4 +1,4 @@
-# nlp-01-getting-started
+# NLP-04-API-Text-Data
 
 [![Python 3.14+](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](#)
 [![MIT](https://img.shields.io/badge/license-see%20LICENSE-yellow.svg)](./LICENSE)
@@ -301,3 +301,84 @@ Suggested Reading Order:
 6. Log File (project.log)
 
    Shows what the program did during execution, helps with debugging, and confirms the program was executed successfully.
+
+## Phase 4 Modification Record
+
+### Custom files created
+
+All example `_case` files were copied and renamed to `_angiecrews`. The originals were not changed.
+
+| Custom file | Purpose |
+|---|---|
+| `src/nlp/config_angiecrews.py` | API endpoint, headers, and output file paths |
+| `src/nlp/stage02_validate_angiecrews.py` | Validation logic for the custom pipeline |
+| `src/nlp/stage03_transform_angiecrews.py` | Field mapping and derived metrics |
+| `src/nlp/pipeline_api_json_angiecrews.py` | Custom pipeline entry point |
+| `data/raw/angiecrews_raw.json` | Raw JSON fetched from the API |
+| `data/processed/angiecrews_comments_processed.csv` | Final filtered and enriched output |
+
+### What I changed (technical modifications)
+
+**A. Changed the API endpoint** (`config_angiecrews.py`)
+
+Changed the source URL from `/posts` to `/comments`:
+
+```python
+# Before
+API_URL: str = "https://jsonplaceholder.typicode.com/posts"
+
+# After
+API_URL: str = "https://jsonplaceholder.typicode.com/comments"
+```
+
+This changed the entire shape of the incoming JSON, requiring updates to validate and transform.
+
+**B. Added a new derived column** (`stage03_transform_angiecrews.py`)
+
+Added `name_word_count`, the word count of the comment author name, alongside the existing `body_word_count`:
+
+```python
+pl.col("name").str.count_matches(r"\S+").alias("name_word_count"),
+```
+
+**C. Added a row filter** (`stage03_transform_angiecrews.py`)
+
+After building the DataFrame, filtered to keep only comments with a body longer than 150 characters:
+
+```python
+df = df.filter(pl.col("body_length") > 150)
+```
+
+**D. Added summary statistics logging** (`stage03_transform_angiecrews.py`)
+
+After filtering, logged min/max/mean of `body_word_count` on every run:
+
+```python
+LOG.info(f"body_word_count stats: min={df['body_word_count'].min()}, max={df['body_word_count'].max()}, mean={df['body_word_count'].mean():.1f}")
+```
+
+**E. Strengthened validation** (`stage02_validate_angiecrews.py`)
+
+Updated required keys to match the `/comments` schema (`postId`, `name`, `email`, `body`) and added checks that text fields are non-empty strings.
+
+### Why I made these changes
+
+- Switching to `/comments` tests that the pipeline adapts to a different JSON structure.
+- The `name_word_count` column extends analysis to the author name field, not just the body.
+- The body-length filter demonstrates how to narrow down results to more substantive records.
+- The summary stats logging adds observability — useful for spotting unexpected data distributions without opening the CSV.
+- The stronger validation catches bad records before they reach the transform stage.
+
+### What I observed after running the project
+
+```shell
+uv run python -m nlp.pipeline_api_json_angiecrews
+```
+
+- **500 comment records** were fetched from the `/comments` endpoint.
+- Validation passed for all 500 records with the updated required-key checks.
+- The body-length filter kept **312 of 500 records**.
+- The log showed: `body_word_count stats: min=19, max=34, mean=26.2`
+- The processed output was written to `data/processed/angiecrews_comments_processed.csv` with 9 columns:
+  `post_id`, `comment_id`, `name`, `email`, `body`, `name_length`, `name_word_count`, `body_length`, `body_word_count`.
+- All original `_case` files were preserved and untouched.

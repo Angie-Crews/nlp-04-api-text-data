@@ -57,3 +57,228 @@ shape: (5, 6)
 2026-03-29 17:15:44 | INFO | CI | ========================
 2026-03-29 17:15:44 | INFO | CI | Pipeline executed successfully!
 2026-03-29 17:15:44 | INFO | CI | ========================
+2026-03-31 18:31:39 | INFO | CI | === RUN START ===
+2026-03-31 18:31:39 | INFO | CI | project=MODULE 4: EVTL PIPELINE (YOURNAME)
+2026-03-31 18:31:39 | INFO | CI | repo_dir=nlp-04-api-text-data
+2026-03-31 18:31:39 | INFO | CI | python=3.14.3
+2026-03-31 18:31:39 | INFO | CI | os=Windows 11
+2026-03-31 18:31:39 | INFO | CI | shell=powershell
+2026-03-31 18:31:39 | INFO | CI | cwd=.
+2026-03-31 18:31:39 | INFO | CI | github_actions=False
+2026-03-31 18:31:39 | INFO | CI | START PIPELINE
+2026-03-31 18:31:39 | INFO | CI | ROOT_PATH = .
+2026-03-31 18:31:39 | INFO | CI | DATA_PATH = data
+2026-03-31 18:31:39 | INFO | CI | RAW_PATH = data\raw
+2026-03-31 18:31:39 | INFO | CI | PROCESSED_PATH = data\processed
+2026-03-31 18:31:39 | INFO | CI | ========================
+2026-03-31 18:31:39 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-03-31 18:31:39 | INFO | CI | ========================
+2026-03-31 18:31:39 | INFO | CI | SOURCE PATH = https://jsonplaceholder.typicode.com/posts
+2026-03-31 18:31:39 | INFO | CI | SINK PATH = data\raw\yourname_raw.json
+2026-03-31 18:31:39 | INFO | CI | ========================
+2026-03-31 18:31:39 | INFO | CI | STAGE 02: VALIDATE (yourname) starting...
+2026-03-31 18:31:39 | INFO | CI | ========================
+2026-03-31 18:31:39 | INFO | CI | JSON STRUCTURE INSPECTION:
+2026-03-31 18:31:39 | INFO | CI | Top-level type: list
+2026-03-31 18:31:39 | INFO | CI | Keys in first record: ['userId', 'id', 'title', 'body']
+2026-03-31 18:31:39 | INFO | CI | Field types:
+2026-03-31 18:31:39 | INFO | CI | userId: int
+2026-03-31 18:31:39 | INFO | CI | id: int
+2026-03-31 18:31:39 | INFO | CI | title: str
+2026-03-31 18:31:39 | INFO | CI | body: str
+2026-03-31 18:31:39 | INFO | CI | Validation passed for 100 records.
+2026-03-31 18:31:39 | INFO | CI | Sink: validated JSON object
+2026-03-31 18:31:39 | INFO | CI | ========================
+2026-03-31 18:31:39 | INFO | CI | STAGE 03: TRANSFORM (yourname) starting...
+2026-03-31 18:31:39 | INFO | CI | ========================
+2026-03-31 18:31:39 | INFO | CI | Transformation complete.
+2026-03-31 18:31:39 | INFO | CI | DataFrame preview:
+shape: (5, 7)
+┌─────────┬─────────┬───────────┬───────────┬───────────┬───────────┬──────────┐
+│ user_id ┆ post_id ┆ title     ┆ body      ┆ title_len ┆ body_leng ┆ body_wor │
+│ ---     ┆ ---     ┆ ---       ┆ ---       ┆ gth       ┆ th        ┆ d_count  │
+│ i64     ┆ i64     ┆ str       ┆ str       ┆ ---       ┆ ---       ┆ ---      │
+│         ┆         ┆           ┆           ┆ u32       ┆ u32       ┆ u32      │
+╞═════════╪═════════╪═══════════╪═══════════╪═══════════╪═══════════╪══════════╡
+│ 1       ┆ 1       ┆ sunt aut  ┆ quia et   ┆ 74        ┆ 158       ┆ 23       │
+│         ┆         ┆ facere    ┆ suscipit  ┆           ┆           ┆          │
+│         ┆         ┆ repellat  ┆ suscipit  ┆           ┆           ┆          │
+│         ┆         ┆ provi…    ┆ recu…     ┆           ┆           ┆          │
+│ 1       ┆ 2       ┆ qui est   ┆ est rerum ┆ 12        ┆ 206       ┆ 31       │
+│         ┆         ┆ esse      ┆ tempore   ┆           ┆           ┆          │
+│         ┆         ┆           ┆ vitae     ┆           ┆           ┆          │
+│         ┆         ┆           ┆ sequi …   ┆           ┆           ┆          │
+│ 1       ┆ 3       ┆ ea        ┆ et iusto  ┆ 59        ┆ 164       ┆ 26       │
+│         ┆         ┆ molestias ┆ sed quo   ┆           ┆           ┆          │
+│         ┆         ┆ quasi exe ┆ iure      ┆           ┆           ┆          │
+│         ┆         ┆ rcitatio… ┆ voluptat… ┆           ┆           ┆          │
+│ 1       ┆ 4       ┆ eum et    ┆ ullam et  ┆ 20        ┆ 190       ┆ 28       │
+│         ┆         ┆ est       ┆ saepe rei ┆           ┆           ┆          │
+│         ┆         ┆ occaecati ┆ ciendis   ┆           ┆           ┆          │
+│         ┆         ┆           ┆ volu…     ┆           ┆           ┆          │
+│ 1       ┆ 5       ┆ nesciunt  ┆ repudiand ┆ 18        ┆ 147       ┆ 23       │
+│         ┆         ┆ quas odio ┆ ae veniam ┆           ┆           ┆          │
+│         ┆         ┆           ┆ quaerat   ┆           ┆           ┆          │
+│         ┆         ┆           ┆ sun…      ┆           ┆           ┆          │
+└─────────┴─────────┴───────────┴───────────┴───────────┴───────────┴──────────┘
+2026-03-31 18:31:39 | INFO | CI | Sink: Polars DataFrame created
+2026-03-31 18:31:39 | INFO | CI | ========================
+2026-03-31 18:31:39 | INFO | CI | STAGE 04: LOAD starting...
+2026-03-31 18:31:39 | INFO | CI | ========================
+2026-03-31 18:31:39 | INFO | CI | SINK PATH = data\processed\yourname_processed.csv
+2026-03-31 18:31:39 | INFO | CI | ========================
+2026-03-31 18:31:39 | INFO | CI | Custom pipeline executed successfully!
+2026-03-31 18:31:39 | INFO | CI | ========================
+2026-03-31 18:32:46 | INFO | CI | === RUN START ===
+2026-03-31 18:32:46 | INFO | CI | project=MODULE 4: EVTL PIPELINE (ANGIECREWS)
+2026-03-31 18:32:46 | INFO | CI | repo_dir=nlp-04-api-text-data
+2026-03-31 18:32:46 | INFO | CI | python=3.14.3
+2026-03-31 18:32:46 | INFO | CI | os=Windows 11
+2026-03-31 18:32:46 | INFO | CI | shell=powershell
+2026-03-31 18:32:46 | INFO | CI | cwd=.
+2026-03-31 18:32:46 | INFO | CI | github_actions=False
+2026-03-31 18:32:46 | INFO | CI | START PIPELINE
+2026-03-31 18:32:46 | INFO | CI | ROOT_PATH = .
+2026-03-31 18:32:46 | INFO | CI | DATA_PATH = data
+2026-03-31 18:32:46 | INFO | CI | RAW_PATH = data\raw
+2026-03-31 18:32:46 | INFO | CI | PROCESSED_PATH = data\processed
+2026-03-31 18:32:46 | INFO | CI | ========================
+2026-03-31 18:32:46 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-03-31 18:32:46 | INFO | CI | ========================
+2026-03-31 18:32:47 | INFO | CI | SOURCE PATH = https://jsonplaceholder.typicode.com/posts
+2026-03-31 18:32:47 | INFO | CI | SINK PATH = data\raw\angiecrews_raw.json
+2026-03-31 18:32:47 | INFO | CI | ========================
+2026-03-31 18:32:47 | INFO | CI | STAGE 02: VALIDATE (angiecrews) starting...
+2026-03-31 18:32:47 | INFO | CI | ========================
+2026-03-31 18:32:47 | INFO | CI | JSON STRUCTURE INSPECTION:
+2026-03-31 18:32:47 | INFO | CI | Top-level type: list
+2026-03-31 18:32:47 | INFO | CI | Keys in first record: ['userId', 'id', 'title', 'body']
+2026-03-31 18:32:47 | INFO | CI | Field types:
+2026-03-31 18:32:47 | INFO | CI | userId: int
+2026-03-31 18:32:47 | INFO | CI | id: int
+2026-03-31 18:32:47 | INFO | CI | title: str
+2026-03-31 18:32:47 | INFO | CI | body: str
+2026-03-31 18:32:47 | INFO | CI | Validation passed for 100 records.
+2026-03-31 18:32:47 | INFO | CI | Sink: validated JSON object
+2026-03-31 18:32:47 | INFO | CI | ========================
+2026-03-31 18:32:47 | INFO | CI | STAGE 03: TRANSFORM (angiecrews) starting...
+2026-03-31 18:32:47 | INFO | CI | ========================
+2026-03-31 18:32:47 | INFO | CI | Transformation complete.
+2026-03-31 18:32:47 | INFO | CI | DataFrame preview:
+shape: (5, 7)
+┌─────────┬─────────┬───────────┬───────────┬───────────┬───────────┬──────────┐
+│ user_id ┆ post_id ┆ title     ┆ body      ┆ title_len ┆ body_leng ┆ body_wor │
+│ ---     ┆ ---     ┆ ---       ┆ ---       ┆ gth       ┆ th        ┆ d_count  │
+│ i64     ┆ i64     ┆ str       ┆ str       ┆ ---       ┆ ---       ┆ ---      │
+│         ┆         ┆           ┆           ┆ u32       ┆ u32       ┆ u32      │
+╞═════════╪═════════╪═══════════╪═══════════╪═══════════╪═══════════╪══════════╡
+│ 1       ┆ 1       ┆ sunt aut  ┆ quia et   ┆ 74        ┆ 158       ┆ 23       │
+│         ┆         ┆ facere    ┆ suscipit  ┆           ┆           ┆          │
+│         ┆         ┆ repellat  ┆ suscipit  ┆           ┆           ┆          │
+│         ┆         ┆ provi…    ┆ recu…     ┆           ┆           ┆          │
+│ 1       ┆ 2       ┆ qui est   ┆ est rerum ┆ 12        ┆ 206       ┆ 31       │
+│         ┆         ┆ esse      ┆ tempore   ┆           ┆           ┆          │
+│         ┆         ┆           ┆ vitae     ┆           ┆           ┆          │
+│         ┆         ┆           ┆ sequi …   ┆           ┆           ┆          │
+│ 1       ┆ 3       ┆ ea        ┆ et iusto  ┆ 59        ┆ 164       ┆ 26       │
+│         ┆         ┆ molestias ┆ sed quo   ┆           ┆           ┆          │
+│         ┆         ┆ quasi exe ┆ iure      ┆           ┆           ┆          │
+│         ┆         ┆ rcitatio… ┆ voluptat… ┆           ┆           ┆          │
+│ 1       ┆ 4       ┆ eum et    ┆ ullam et  ┆ 20        ┆ 190       ┆ 28       │
+│         ┆         ┆ est       ┆ saepe rei ┆           ┆           ┆          │
+│         ┆         ┆ occaecati ┆ ciendis   ┆           ┆           ┆          │
+│         ┆         ┆           ┆ volu…     ┆           ┆           ┆          │
+│ 1       ┆ 5       ┆ nesciunt  ┆ repudiand ┆ 18        ┆ 147       ┆ 23       │
+│         ┆         ┆ quas odio ┆ ae veniam ┆           ┆           ┆          │
+│         ┆         ┆           ┆ quaerat   ┆           ┆           ┆          │
+│         ┆         ┆           ┆ sun…      ┆           ┆           ┆          │
+└─────────┴─────────┴───────────┴───────────┴───────────┴───────────┴──────────┘
+2026-03-31 18:32:47 | INFO | CI | Sink: Polars DataFrame created
+2026-03-31 18:32:47 | INFO | CI | ========================
+2026-03-31 18:32:47 | INFO | CI | STAGE 04: LOAD starting...
+2026-03-31 18:32:47 | INFO | CI | ========================
+2026-03-31 18:32:47 | INFO | CI | SINK PATH = data\processed\angiecrews_processed.csv
+2026-03-31 18:32:47 | INFO | CI | ========================
+2026-03-31 18:32:47 | INFO | CI | Custom pipeline executed successfully!
+2026-03-31 18:32:47 | INFO | CI | ========================
+2026-03-31 19:05:43 | INFO | CI | === RUN START ===
+2026-03-31 19:05:43 | INFO | CI | project=MODULE 4: EVTL PIPELINE (ANGIECREWS)
+2026-03-31 19:05:43 | INFO | CI | repo_dir=nlp-04-api-text-data
+2026-03-31 19:05:43 | INFO | CI | python=3.14.3
+2026-03-31 19:05:43 | INFO | CI | os=Windows 11
+2026-03-31 19:05:43 | INFO | CI | shell=powershell
+2026-03-31 19:05:43 | INFO | CI | cwd=.
+2026-03-31 19:05:43 | INFO | CI | github_actions=False
+2026-03-31 19:05:43 | INFO | CI | START PIPELINE
+2026-03-31 19:05:43 | INFO | CI | ROOT_PATH = .
+2026-03-31 19:05:43 | INFO | CI | DATA_PATH = data
+2026-03-31 19:05:43 | INFO | CI | RAW_PATH = data\raw
+2026-03-31 19:05:43 | INFO | CI | PROCESSED_PATH = data\processed
+2026-03-31 19:05:43 | INFO | CI | ========================
+2026-03-31 19:05:43 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-03-31 19:05:43 | INFO | CI | ========================
+2026-03-31 19:05:44 | INFO | CI | SOURCE PATH = https://jsonplaceholder.typicode.com/comments
+2026-03-31 19:05:44 | INFO | CI | SINK PATH = data\raw\angiecrews_raw.json
+2026-03-31 19:05:44 | INFO | CI | ========================
+2026-03-31 19:05:44 | INFO | CI | STAGE 02: VALIDATE (angiecrews) starting...
+2026-03-31 19:05:44 | INFO | CI | ========================
+2026-03-31 19:05:44 | INFO | CI | JSON STRUCTURE INSPECTION:
+2026-03-31 19:05:44 | INFO | CI | Top-level type: list
+2026-03-31 19:05:44 | INFO | CI | Keys in first record: ['postId', 'id', 'name', 'email', 'body']
+2026-03-31 19:05:44 | INFO | CI | Field types:
+2026-03-31 19:05:44 | INFO | CI | postId: int
+2026-03-31 19:05:44 | INFO | CI | id: int
+2026-03-31 19:05:44 | INFO | CI | name: str
+2026-03-31 19:05:44 | INFO | CI | email: str
+2026-03-31 19:05:44 | INFO | CI | body: str
+2026-03-31 19:05:44 | INFO | CI | Validation passed for 500 records.
+2026-03-31 19:05:44 | INFO | CI | Sink: validated JSON object
+2026-03-31 19:05:44 | INFO | CI | ========================
+2026-03-31 19:05:44 | INFO | CI | STAGE 03: TRANSFORM (angiecrews) starting...
+2026-03-31 19:05:44 | INFO | CI | ========================
+2026-03-31 19:05:44 | INFO | CI | Filter applied: body_length > 150 — kept 312 of 500 records.
+2026-03-31 19:05:44 | INFO | CI | body_word_count stats: min=19, max=34, mean=26.2
+2026-03-31 19:05:44 | INFO | CI | Transformation complete.
+2026-03-31 19:05:44 | INFO | CI | DataFrame preview:
+shape: (5, 9)
+┌─────────┬─────────┬─────────┬────────┬───┬────────┬────────┬────────┬────────┐
+│ post_id ┆ comment ┆ name    ┆ email  ┆ … ┆ name_l ┆ name_w ┆ body_l ┆ body_w │
+│ ---     ┆ _id     ┆ ---     ┆ ---    ┆   ┆ ength  ┆ ord_co ┆ ength  ┆ ord_co │
+│ i64     ┆ ---     ┆ str     ┆ str    ┆   ┆ ---    ┆ unt    ┆ ---    ┆ unt    │
+│         ┆ i64     ┆         ┆        ┆   ┆ u32    ┆ ---    ┆ u32    ┆ ---    │
+│         ┆         ┆         ┆        ┆   ┆        ┆ u32    ┆        ┆ u32    │
+╞═════════╪═════════╪═════════╪════════╪═══╪════════╪════════╪════════╪════════╡
+│ 1       ┆ 2       ┆ quo     ┆ Jayne_ ┆ … ┆ 41     ┆ 6      ┆ 168    ┆ 25     │
+│         ┆         ┆ vero    ┆ Kuhic@ ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ reicien ┆ sydney ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ dis     ┆ .com   ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ velit   ┆        ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ simi…   ┆        ┆   ┆        ┆        ┆        ┆        │
+│ 1       ┆ 3       ┆ odio    ┆ Nikita ┆ … ┆ 29     ┆ 5      ┆ 218    ┆ 29     │
+│         ┆         ┆ adipisc ┆ @garfi ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ i rerum ┆ eld.bi ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ aut     ┆ z      ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ animi   ┆        ┆   ┆        ┆        ┆        ┆        │
+│ 1       ┆ 4       ┆ alias   ┆ Lew@al ┆ … ┆ 14     ┆ 3      ┆ 154    ┆ 23     │
+│         ┆         ┆ odio    ┆ ysha.t ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ sit     ┆ v      ┆   ┆        ┆        ┆        ┆        │
+│ 2       ┆ 6       ┆ et      ┆ Presle ┆ … ┆ 54     ┆ 9      ┆ 168    ┆ 22     │
+│         ┆         ┆ fugit   ┆ y.Muel ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ eligend ┆ ler@my ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ i delen ┆ rl.com ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ iti     ┆        ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ qui…    ┆        ┆   ┆        ┆        ┆        ┆        │
+│ 2       ┆ 7       ┆ repella ┆ Dallas ┆ … ┆ 63     ┆ 7      ┆ 173    ┆ 26     │
+│         ┆         ┆ t conse ┆ @ole.m ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ quatur  ┆ e      ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ praesen ┆        ┆   ┆        ┆        ┆        ┆        │
+│         ┆         ┆ ti…     ┆        ┆   ┆        ┆        ┆        ┆        │
+└─────────┴─────────┴─────────┴────────┴───┴────────┴────────┴────────┴────────┘
+2026-03-31 19:05:44 | INFO | CI | Sink: Polars DataFrame created
+2026-03-31 19:05:44 | INFO | CI | ========================
+2026-03-31 19:05:44 | INFO | CI | STAGE 04: LOAD starting...
+2026-03-31 19:05:44 | INFO | CI | ========================
+2026-03-31 19:05:44 | INFO | CI | SINK PATH = data\processed\angiecrews_comments_processed.csv
+2026-03-31 19:05:44 | INFO | CI | ========================
+2026-03-31 19:05:44 | INFO | CI | Custom pipeline executed successfully!
+2026-03-31 19:05:44 | INFO | CI | ========================
