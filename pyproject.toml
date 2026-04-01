@@ -24,6 +24,10 @@ dependencies = [
     # "spacy", # WHY: Industrial-strength NLP library for tokenization and linguistic analysis.
 ]
 
+[project.urls]
+Homepage = "https://Angie-Crews.github.io/nlp-04-api-text-data/"
+Repository = "https://github.com/Angie-Crews/nlp-04-api-text-data"
+
 [project.optional-dependencies]
 # WHY: Optional dependency groups keep the core install clean and focused.
 dev = [
